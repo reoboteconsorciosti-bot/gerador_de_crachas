@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+:root {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: #020617;
+  /* Slate 950 */
+  color: #e2e8f0;
+  /* Slate 200 */
+  overflow: hidden;
+  /* App-like feel */
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+/* Glassmorphism Utilities */
+.glass-panel {
+  background: rgba(15, 23, 42, 0.7);
+  /* Slate 900 / 0.7 */
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.input-pro {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+  border-radius: 4px;
+  font-size: 11px;
+  font-family: monospace;
+  transition: all 0.2s;
+}
+
+.input-pro:focus {
+  border-color: #3b82f6;
+  /* Blue 500 */
+  outline: none;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.btn-icon {
+  @apply p-2 rounded hover:bg-white/10 text-slate-400 hover:text-white transition-colors cursor-pointer;
+}
+
+.btn-primary {
+  @apply px-3 py-1.5 bg-blue-600 hover:bg-blue-500 text-white rounded text-xs font-semibold shadow-lg transition-all;
+}
+
+.scrubber-label {
+  @apply text-[10px] text-slate-500 font-bold uppercase tracking-wider cursor-ew-resize hover:text-blue-400 select-none;
+}

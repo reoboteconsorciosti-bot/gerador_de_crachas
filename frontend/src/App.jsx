@@ -317,41 +317,41 @@ function AppContent() {
         <div className="w-full h-full overflow-hidden flex flex-col relative bg-[#020617]">
           {mode === 'names' ? (
             /* NAMES PAGE - Dedicated name input interface */
-            <div className="flex items-center justify-center h-full p-8">
-              <div className="max-w-2xl w-full space-y-6 animate-in fade-in duration-500">
+            <div className="flex items-center justify-center h-full p-4 md:p-8 overflow-y-auto align-top sm:align-middle">
+              <div className="max-w-2xl w-full space-y-4 md:space-y-6 animate-in fade-in duration-500 my-auto">
                 {/* Header */}
                 <div className="text-center space-y-2">
-                  <div className="flex items-center justify-center gap-3 mb-4">
-                    <Sparkles className="text-purple-400" size={32} />
-                    <h1 className="text-3xl font-bold text-white">Badge Generator</h1>
+                  <div className="flex items-center justify-center gap-2 md:gap-3 mb-2 md:mb-4">
+                    <Sparkles className="text-purple-400" size={24} />
+                    <h1 className="text-2xl md:text-3xl font-bold text-white">Gerador de Crachás</h1>
                   </div>
-                  <p className="text-slate-400 text-sm">
+                  <p className="text-slate-400 text-xs md:text-sm">
                     Adicione os nomes linha por linha para gerar os crachás
                   </p>
                 </div>
 
                 {/* Main Input Card */}
-                <div className="bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 p-8 shadow-2xl">
+                <div className="bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 p-4 md:p-8 shadow-2xl">
                   <textarea
                     value={nameList}
                     onChange={(e) => setNameList(e.target.value)}
-                    placeholder={"João Silva\nMaria Santos\nPedro Costa\n...\n(Add more names)"}
-                    className="w-full h-96 bg-[#020617] border border-white/20 rounded-xl text-base text-white placeholder-slate-600 px-6 py-4 resize-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/50 outline-none font-mono leading-relaxed transition-all"
+                    placeholder={"João Silva\nMaria Santos\nPedro Costa\n...\n(Adicione mais nomes)"}
+                    className="w-full h-64 md:h-96 bg-[#020617] border border-white/20 rounded-xl text-sm md:text-base text-white placeholder-slate-600 px-4 py-3 md:px-6 md:py-4 resize-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/50 outline-none font-mono leading-relaxed transition-all"
                   />
 
                   {/* Counter & Stats */}
                   {nameList.trim() ? (
-                    <div className="mt-6 flex items-center justify-between p-4 bg-purple-500/10 border border-purple-500/20 rounded-lg">
-                      <div className="flex gap-6">
+                    <div className="mt-4 md:mt-6 flex flex-col sm:flex-row items-center justify-between p-3 md:p-4 bg-purple-500/10 border border-purple-500/20 rounded-lg gap-3 sm:gap-0">
+                      <div className="flex gap-4 md:gap-6">
                         <div className="flex items-center gap-2">
                           <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse" />
-                          <span className="text-sm text-slate-300">
-                            <span className="font-bold text-white">{nameList.split('\n').filter(n => n.trim()).length}</span> {nameList.split('\n').filter(n => n.trim()).length === 1 ? 'name' : 'names'}
+                          <span className="text-xs md:text-sm text-slate-300">
+                            <span className="font-bold text-white">{nameList.split('\n').filter(n => n.trim()).length}</span> {nameList.split('\n').filter(n => n.trim()).length === 1 ? 'nome' : 'nomes'}
                           </span>
                         </div>
                         <div className="flex items-center gap-2">
-                          <FileText className="text-purple-400" size={16} />
-                          <span className="text-sm text-slate-300">
+                          <FileText className="text-purple-400" size={14} />
+                          <span className="text-xs md:text-sm text-slate-300">
                             <span className="font-bold text-white">{Math.ceil(nameList.split('\n').filter(n => n.trim()).length / 2)}</span> PDF{Math.ceil(nameList.split('\n').filter(n => n.trim()).length / 2) > 1 ? 's' : ''}
                           </span>
                         </div>
@@ -364,7 +364,7 @@ function AppContent() {
                       </button>
                     </div>
                   ) : (
-                    <div className="mt-6 text-center text-slate-600 text-sm">
+                    <div className="mt-4 md:mt-6 text-center text-slate-600 text-xs md:text-sm">
                       Adicione os nomes acima e veja no preview
                     </div>
                   )}
@@ -373,17 +373,17 @@ function AppContent() {
                   <button
                     onClick={handleExport}
                     disabled={!nameList.trim() || !isConnected}
-                    className="w-full mt-6 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-500 hover:to-blue-500 disabled:from-slate-700 disabled:to-slate-600 disabled:cursor-not-allowed text-white font-bold py-4 px-6 rounded-xl flex items-center justify-center gap-3 shadow-lg shadow-purple-900/30 hover:shadow-purple-600/40 transition-all duration-300 disabled:opacity-50 text-lg"
+                    className="w-full mt-4 md:mt-6 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-500 hover:to-blue-500 disabled:from-slate-700 disabled:to-slate-600 disabled:cursor-not-allowed text-white font-bold py-3 px-4 md:py-4 md:px-6 rounded-xl flex items-center justify-center gap-2 md:gap-3 shadow-lg shadow-purple-900/30 hover:shadow-purple-600/40 transition-all duration-300 disabled:opacity-50 text-base md:text-lg"
                   >
-                    <Download size={20} />
+                    <Download size={18} className="md:w-5 md:h-5" />
                     {isConnected ? 'Gerar PDFs' : 'Backend Offline'}
                   </button>
                 </div>
 
                 {/* Help Text */}
-                <div className="text-center text-xs text-slate-600">
-                  <p>💡 Each PDF contains 2 names (top and bottom)</p>
-                  <p className="mt-1">Want to customize? Go to <span className="text-blue-400 font-semibold">Design</span> tab</p>
+                <div className="text-center text-[10px] md:text-xs text-slate-600">
+                  <p>💡 Cada PDF contém 2 nomes (topo e base)</p>
+                  <p className="mt-1">Quer customizar? Vá para a aba <span className="text-blue-400 font-semibold">Design</span></p>
                 </div>
               </div>
             </div>
